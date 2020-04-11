@@ -1,0 +1,21 @@
+---
+# defaults file for openvpnClient-task
+
+
+openvpnClient_compression: yes
+openvpnClient_device: tun
+openvpnClient_dir: /etc/openvpn
+openvpnClient_file: client.conf
+openvpnClient_file_ca: "{{ openvpnClient_dir }}/ca.crt"
+openvpnClient_file_key: "{{ openvpnClient_dir }}/keycert.key"
+openvpnClient_file_crt: "{{ openvpnClient_dir }}/certificate.crt"
+openvpnClient_port: 1194
+openvpnClient_protocol: tcp
+openvpnClient_server_host: net-vpntest
+openvpnClient_server_host2: net-vpntest
+openvpnClient_use_tls: yes
+
+
+cacrt_name: ""
+certificate_name: ""
+keycert: ""

@@ -1,0 +1,22 @@
+---
+# tasks file for openvpnClient-task
+
+
+- name: print openvpnClient_client_config
+  debug:
+    msg: openvpnClient_client_config
+
+- name: iptables first
+  include_tasks: iptables.yml
+
+- name: install next
+  include_tasks: install.yml
+  tags: install
+
+
+- name: config finally
+  include_tasks: config_client.yml
+  tags: config
+
+- meta:
+    free_form: flush_handlers

@@ -1,0 +1,41 @@
+---
+# Copy to /etc/openvpn/client.conf from the template, restart the service
+
+
+
+- name: generate client config
+  template:
+    src: "etc/openvpn/client.conf.j2"
+    dest: "{{ openvpnClient_dir }}/{{ openvpnClient_file }}"
+    owner: root
+    group: root
+    mode: 0400
+  # notify:
+  #   - restart openvpn
+  become: true
+
+
+- name: generate ca cert
+  template:
+    src: "etc/openvpn/ca.crt.j2"
+    dest: "{{ openvpnClient_file_ca }}"
+    owner: root
+    group: root
+    mode: 0400
+
+- name: generate key cert
+  template:
+    src: "etc/openvpn/keycert.key.j2"
+    dest: "{{ openvpnClient_file_key }}"
+    owner: root
+    group: root
+    mode: 0400
+
+
+- name: generate crt cert
+  template:
+    src: "etc/openvpn/certificate.crt.j2"
+    dest: "{{ openvpnClient_file_crt }}"
+    owner: root
+    group: root
+    mode: 0400

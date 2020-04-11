@@ -1,0 +1,13 @@
+---
+# handlers file for openvpnClient-task
+
+
+# - name: restart openvpn
+#   shell: 'openvpn "{{ openvpnClient_dir }}"/"{{ openvpnClient_file }}" &'
+
+- name: restart openvpn
+  become: true
+  systemd:
+    name: openvpn
+    state: restarted
+    daemon_reload: yes

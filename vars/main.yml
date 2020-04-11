@@ -1,0 +1,27 @@
+---
+
+# Type - client
+openvpnClient_client: client
+# # Log After 20 Mass
+# openvpnClient_mute: 20
+# verbose
+openvpnClient_verbose: 3
+# logs
+openvpnClient_log: /var/log/openvpn.log
+# logs
+openvpnClient_status_log: /var/log/openvpn-status.log
+
+# nobind use a dynamic port to connect
+openvpnClient_nobind: yes
+
+# # use a dynamic port to connect
+# openvpnClient_cipher: AES-256-CBC
+
+# Do not re-read key files if it arrives SIGUSR1 / --ping-restart
+openvpnClient_persist_key: yes
+
+# Do not put out + raise TUN if flew SIGUSR1 / --ping-restart
+openvpnClient_persist_tun: yes
+
+# Policy-level
+openvpnClient_script_security: 2

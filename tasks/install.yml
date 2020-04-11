@@ -1,0 +1,22 @@
+---
+
+- name: Update apt packages
+  become: true
+  apt:
+    upgrade: yes
+
+- name: Install openvpn
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - openvpn
+    - easy-rsa
+
+- name: Start openvpn systemd service
+  become: true
+  systemd:
+    name: openvpn
+    state: started
+    daemon_reload: yes
+    enabled: yes

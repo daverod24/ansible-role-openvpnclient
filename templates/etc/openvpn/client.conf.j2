@@ -1,0 +1,36 @@
+############ WARN!
+#### {{ ansible_managed }}
+#############
+{{ openvpnClient_client }}
+dev {{ openvpnClient_device }}
+proto {{ openvpnClient_protocol }}
+remote {{ openvpnClient_server_host }} {{ openvpnClient_port }}
+remote {{ openvpnClient_server_host2 }} {{ openvpnClient_port }}
+resolv-retry infinite
+{% if openvpnClient_nobind %}
+nobind
+{% endif %}
+{% if openvpnClient_persist_key %}
+persist-key
+{% endif %}
+{% if openvpnClient_persist_tun %}
+persist-tun
+{% endif %}
+keepalive 15 60
+{% if openvpnClient_file_ca %}
+ca {{ openvpnClient_file_ca }}
+{% endif %}
+{% if openvpnClient_file_key %}
+key {{ openvpnClient_file_key }}
+{% endif %}
+{% if openvpnClient_file_crt %}
+cert {{ openvpnClient_file_crt }}
+{% endif %}
+remote-cert-tls server
+{# ns-cert-type server #}
+{% if openvpnClient_compression %}
+comp-lzo
+{% endif %}
+status {{ openvpnClient_status_log }}
+log {{ openvpnClient_log }}
+verb {{ openvpnClient_verbose }}
