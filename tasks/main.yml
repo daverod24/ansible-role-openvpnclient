@@ -17,6 +17,3 @@
 - name: config finally
   include_tasks: config_client.yml
   tags: config
-
-- meta:
-    free_form: flush_handlers
